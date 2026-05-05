@@ -1,0 +1,12 @@
+Vendored file: html2pdf.bundle.min.js
+
+Upstream: https://github.com/eKoopmans/html2pdf.js
+npm package: html2pdf.js (dist build bundles html2canvas + jsPDF)
+
+To refresh from a known version:
+  npm pack html2pdf.js@<version>
+  tar xf html2pdf.js-*.tgz && cp package/dist/html2pdf.bundle.min.js assets/
+
+Update this note when you change the bundle. Optional: add package/dist/*.LICENSE.txt
+if you want full third-party license text in-repo (the minified file references
+html2pdf.bundle.min.js.LICENSE.txt from the npm package).

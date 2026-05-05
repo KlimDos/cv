@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Aleksandr Alimov CV: SRE Lead with 15+ years in platform engineering, Kubernetes, GitOps, and enterprise infrastructure."
+  />
+  <title>Aleksandr Alimov — CV</title>
+  <style>
+    :root {
+      --bg: #f8f8f7;
+      --surface: #ffffff;
+      --text: #1a1a19;
+      --muted: #555551;
+      --heading: #0f0f0e;
+      --link: #1c3f77;
+      --rule: #d9d9d5;
+      --accent: #222221;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 2.25rem 1.25rem 2.75rem;
+      font-family: Charter, "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+        Palatino, "Times New Roman", serif;
+      font-size: 15px;
+      line-height: 1.58;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .page {
+      max-width: 1020px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      padding: 1.8rem 1.8rem 1.6rem;
+    }
+
+    .top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.2rem;
+      align-items: start;
+      padding: 0 1.5rem 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .top-left {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.75rem 1.5rem;
+      align-items: center;
+    }
+
+    .header-intro {
+      min-width: 0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.1rem;
+      line-height: 1.15;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--heading);
+    }
+
+    .header-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem 0.6rem;
+      margin: 0.65rem 0 0;
+      padding: 0;
+      list-style: none;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .header-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.38rem 0.75rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--text);
+      text-decoration: none;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .header-link:hover {
+      /* plain hex: html2canvas cannot parse color-mix() */
+      border-color: #9c9c96;
+      background: #fcfcfb;
+    }
+
+    .header-link:focus-visible {
+      outline: 2px solid var(--link);
+      outline-offset: 2px;
+    }
+
+    .header-link svg {
+      flex-shrink: 0;
+      width: 14px;
+      height: 14px;
+      opacity: 0.72;
+    }
+
+    .header-link-text {
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 0.78rem;
+    }
+
+    .photo-wrap {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      border-radius: 50%;
+      /* plain hex in gradient: html2canvas cannot parse color-mix() */
+      background: linear-gradient(145deg, #e6e6e2 0%, var(--surface) 100%);
+      box-shadow: 0 4px 18px rgba(15, 15, 14, 0.07);
+    }
+
+    .photo-crop {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--surface);
+    }
+
+    .photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      transform: scale(1.3);
+      transform-origin: center center;
+    }
+
+    .employer-logo {
+      display: block;
+      width: auto;
+      height: auto;
+      margin: 0.25rem 0 0.4rem;
+      border: 0;
+    }
+
+    .employer-logo.wiley-logo {
+      height: 50px;
+    }
+
+    .employer-logo.axcient-logo {
+      height: 32px;
+    }
+
+    .employer-logo.electronmash-logo {
+      height: 30px;
+    }
+
+    .employer-logo.virtualpos-logo {
+      height: 50px;
+    }
+
+    .employer-logo.school-logo {
+      height: 64px;
+    }
+
+    .employer-logo.kantiana-logo {
+      height: 36px;
+    }
+
+    /* Academic: logo column + text — avoids stacked full-width logos */
+    .edu-block {
+      display: flex;
+      gap: 0.95rem;
+      align-items: flex-start;
+      margin: 0 0 0.85rem;
+    }
+
+    .edu-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .edu-logo {
+      flex: 0 0 5.25rem;
+      width: 5.25rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0.12rem;
+    }
+
+    .edu-logo a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 0;
+    }
+
+    .edu-logo-img {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin: 0;
+    }
+
+    .edu-logo-img--ikbfu {
+      max-height: 2.65rem;
+    }
+
+    .edu-logo-img--ecm {
+      max-height: 1.75rem;
+    }
+
+    .edu-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .edu-text p {
+      margin: 0 0 0.38rem;
+    }
+
+    .edu-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cols {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(250px, 290px);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    /* Header is first row of the same grid as main+sidebar (better print fragmentation). */
+    .top--span {
+      grid-column: 1 / -1;
+    }
+
+    .sidebar {
+      border-left: 1px solid var(--rule);
+      padding-left: 1.15rem;
+    }
+
+    .section-title {
+      margin: 1.35rem 0 0.6rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 700;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.25rem;
+    }
+
+    p {
+      margin: 0 0 0.72rem;
+      color: var(--text);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .role-title {
+      margin: 1.05rem 0 0.1rem;
+      font-size: 1.03rem;
+      font-weight: 700;
+      color: var(--heading);
+      line-height: 1.32;
+    }
+
+    .role-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.9rem;
+      margin-top: 1.05rem;
+    }
+
+    .role-head .role-title {
+      margin: 0;
+      flex: 1;
+    }
+
+    .role-head .company-line {
+      margin: 0;
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    .role-head .employer-logo {
+      margin: 0;
+    }
+
+    .job-sep {
+      border-top: 1px solid var(--rule);
+      padding-top: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .company-line {
+      margin: 0 0 0.08rem;
+      font-weight: 700;
+    }
+
+    .company-line a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .dates {
+      margin: 0 0 0.5rem;
+      font-size: 0.87rem;
+      color: var(--muted);
+    }
+
+    ul.tight {
+      margin: 0 0 0.72rem;
+      padding-left: 1.2rem;
+    }
+
+    ul.tight li {
+      margin-bottom: 0.32rem;
+    }
+
+    .stack-h {
+      margin: 0 0 0.45rem;
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.22rem;
+    }
+
+    .stack-block {
+      margin: 0 0 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .stack-block strong {
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .stack-block ul {
+      margin: 0;
+      padding-left: 1rem;
+    }
+
+    .stack-block li {
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-mini {
+      margin: 0 0 1rem;
+      font-size: 0.86rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .contact-mini a {
+      color: var(--link);
+    }
+
+    .pdf-fab {
+      position: fixed;
+      right: max(1rem, env(safe-area-inset-right, 0px));
+      bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+      z-index: 9999;
+      margin: 0;
+      padding: 0.65rem 1.1rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #fff;
+      background: var(--heading);
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      box-shadow: 0 4px 16px rgba(15, 15, 14, 0.2);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .pdf-fab:hover {
+      filter: brightness(1.07);
+    }
+
+    .pdf-fab:focus-visible {
+      outline: 2px solid var(--link);
+      outline-offset: 3px;
+    }
+
+    .pdf-fab:active {
+      filter: brightness(0.95);
+    }
+
+    .pdf-file-protocol-note {
+      position: fixed;
+      left: max(0.75rem, env(safe-area-inset-left, 0px));
+      bottom: max(4.75rem, env(safe-area-inset-bottom, 0px));
+      max-width: min(22rem, calc(100vw - 9rem));
+      margin: 0;
+      padding: 0.5rem 0.65rem;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.72rem;
+      line-height: 1.35;
+      color: #5c4d00;
+      background: #fff9e6;
+      border: 1px solid #e6d080;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      z-index: 9998;
+    }
+
+    .pdf-file-protocol-note code {
+      font-size: 0.68rem;
+      word-break: break-all;
+    }
+
+    @media (max-width: 860px) {
+      body {
+        padding: 1rem 0.8rem 1.25rem;
+        font-size: 14px;
+      }
+
+      .page {
+        padding: 1rem;
+      }
+
+      .cols {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        border-left: 0;
+        border-top: 1px solid var(--rule);
+        margin-top: 0.6rem;
+        padding-left: 0;
+        padding-top: 0.8rem;
+      }
+
+      .role-head {
+        align-items: flex-start;
+      }
+
+      .top-left {
+        grid-template-columns: 1fr;
+        justify-items: start;
+      }
+
+      .photo-wrap {
+        order: -1;
+        margin-bottom: 0.25rem;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 11mm 12mm;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      html {
+        font-size: 100%;
+      }
+
+      body {
+        padding: 0 !important;
+        margin: 0;
+        font-size: 10.5pt;
+        line-height: 1.35;
+        background: #fff !important;
+        color: #000;
+      }
+
+      .page {
+        max-width: none !important;
+        border: 0 !important;
+        padding: 0 !important;
+        margin: 0;
+        box-shadow: none !important;
+        background: #fff !important;
+      }
+
+      a {
+        color: #000 !important;
+        text-decoration: none;
+      }
+
+      /* ---- Compact header: one row, small photo ---- */
+      .top {
+        display: block;
+        padding: 0 0 0.35rem !important;
+        margin: 0 0 0.35rem !important;
+        border-bottom: 0.5pt solid #999;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .top-left {
+        display: grid !important;
+        grid-template-columns: 1fr auto !important;
+        align-items: center !important;
+        gap: 0.5rem 0.85rem !important;
+        justify-items: stretch;
+      }
+
+      .header-intro {
+        min-width: 0;
+      }
+
+      .photo-wrap {
+        box-shadow: none !important;
+        background: none !important;
+        padding: 0 !important;
+        order: unset !important;
+        margin: 0 !important;
+        align-self: center;
+        justify-self: end;
+      }
+
+      .photo-crop {
+        width: 52pt !important;
+        height: 52pt !important;
+        min-width: 52pt;
+        min-height: 52pt;
+        max-width: 52pt;
+        max-height: 52pt;
+        border: 0.5pt solid #bbb;
+        overflow: hidden !important;
+      }
+
+      .photo {
+        transform: none !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: cover;
+        object-position: center 40%;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      h1 {
+        font-size: 17pt !important;
+        line-height: 1.12 !important;
+        margin: 0 !important;
+      }
+
+      .header-links {
+        margin: 0.28rem 0 0 !important;
+        gap: 0.25rem 0.4rem !important;
+      }
+
+      .header-link {
+        background: #f5f5f5 !important;
+        border: 0.5pt solid #ccc !important;
+        padding: 0.12rem 0.45rem !important;
+        font-size: 8pt !important;
+        border-radius: 3px;
+      }
+
+      .header-link svg {
+        width: 11px !important;
+        height: 11px !important;
+      }
+
+      /* ---- Main + sidebar: tighter two-column grid (header is row 1 of this grid) ---- */
+      .cols {
+        display: grid !important;
+        grid-template-columns: 1fr 27% !important;
+        gap: 0.45rem 0.7rem !important;
+        align-items: start !important;
+        break-inside: auto;
+        page-break-inside: auto;
+      }
+
+      .top--span {
+        grid-column: 1 / -1 !important;
+      }
+
+      .sidebar {
+        border-left: 0.5pt solid #bbb !important;
+        padding-left: 0.55rem !important;
+        margin: 0 !important;
+        font-size: 9.25pt !important;
+        line-height: 1.32 !important;
+      }
+
+      .contact-mini {
+        margin: 0 0 0.4rem !important;
+        font-size: 9pt !important;
+        line-height: 1.3 !important;
+      }
+
+      .stack-h {
+        margin: 0 0 0.2rem !important;
+        font-size: 7.5pt !important;
+        letter-spacing: 0.06em !important;
+        padding-bottom: 0.1rem !important;
+      }
+
+      .stack-block {
+        margin: 0 0 0.35rem !important;
+        font-size: 8.75pt !important;
+        line-height: 1.3 !important;
+      }
+
+      .stack-block strong {
+        margin-bottom: 0.08rem !important;
+      }
+
+      .stack-block ul {
+        padding-left: 0.85rem !important;
+      }
+
+      .stack-block li {
+        margin-bottom: 0.1rem !important;
+      }
+
+      /* ---- Body typography & vertical rhythm ---- */
+      .section-title {
+        margin: 0.5rem 0 0.22rem !important;
+        font-size: 7.5pt !important;
+        letter-spacing: 0.08em !important;
+        padding-bottom: 0.12rem !important;
+        page-break-after: avoid;
+      }
+
+      main > .section-title:first-of-type {
+        margin-top: 0.15rem !important;
+      }
+
+      p {
+        margin: 0 0 0.4rem !important;
+        orphans: 3;
+        widows: 3;
+      }
+
+      .dates {
+        margin: 0 0 0.22rem !important;
+        font-size: 9pt !important;
+      }
+
+      .role-title {
+        margin: 0.5rem 0 0.06rem !important;
+        font-size: 10.5pt !important;
+        line-height: 1.2 !important;
+        page-break-after: avoid;
+      }
+
+      .role-head {
+        margin-top: 0.45rem !important;
+        gap: 0.4rem !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .role-head .role-title {
+        margin: 0 !important;
+      }
+
+      .job-sep {
+        padding-top: 0.35rem !important;
+        margin-top: 0.35rem !important;
+      }
+
+      ul.tight {
+        margin: 0 0 0.4rem !important;
+        padding-left: 1rem !important;
+      }
+
+      ul.tight li {
+        margin-bottom: 0.1rem !important;
+      }
+
+      /* ---- Logos & academic blocks ---- */
+      .employer-logo {
+        margin: 0.08rem 0 0.12rem !important;
+      }
+
+      .employer-logo.wiley-logo {
+        height: 22px !important;
+      }
+
+      .employer-logo.axcient-logo {
+        height: 16px !important;
+      }
+
+      .employer-logo.electronmash-logo {
+        height: 16px !important;
+      }
+
+      .employer-logo.virtualpos-logo {
+        height: 22px !important;
+      }
+
+      .employer-logo.school-logo {
+        height: 36px !important;
+      }
+
+      .employer-logo.kantiana-logo {
+        height: 22px !important;
+      }
+
+      .edu-block {
+        margin: 0 0 0.4rem !important;
+        gap: 0.45rem !important;
+        page-break-inside: avoid;
+      }
+
+      .edu-logo {
+        flex-basis: 4.25rem !important;
+        width: 4.25rem !important;
+        padding-top: 0 !important;
+      }
+
+      .edu-logo-img--ikbfu {
+        max-height: 1.85rem !important;
+      }
+
+      .edu-logo-img--ecm {
+        max-height: 1.35rem !important;
+      }
+
+      .edu-text p {
+        margin: 0 0 0.22rem !important;
+      }
+
+      /* ---- Page flow ---- */
+      h2.section-title {
+        break-after: avoid;
+      }
+
+      .pdf-fab {
+        display: none !important;
+      }
+
+      .pdf-file-protocol-note {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="cols">
+    <header class="top top--span">
+      <div class="top-left">
+        <div class="header-intro">
+          <h1>Aleksandr Alimov</h1>
+          <ul class="header-links" aria-label="Web presence">
+            <li>
+              <a
+                class="header-link"
+                href="https://alimov.top"
+                rel="me noopener"
+                title="https://alimov.top"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+                <span>alimov.top</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="header-link"
+                href="https://github.com/klimdos"
+                rel="noopener"
+                title="https://github.com/klimdos"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+                <span>GitHub</span><span class="header-link-text">@klimdos</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="photo-wrap">
+          <div class="photo-crop">
+            <img
+              class="photo"
+              src="assets/sasha_logo.jpg"
+              width="132"
+              height="132"
+              alt="Aleksandr Alimov"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+
+      <main>
+        <h2 class="section-title">Personal Summary</h2>
+        <p>
+          I have 15+ years of experience in IT industry. Wide expertise to architect,
+          implement and support any types of IT projects, from small startup installations
+          with cost efficiency as a priority to participating in huge enterprise ecosystems
+          where communication is the most valuable skill. I am an experienced engineer ready
+          to provide high-level tech support for the client. Extensive Linux, Windows,
+          Hardware, Software experience. Passionate about Cloud Native, Open source and
+          Platform engineering.
+        </p>
+
+        <h2 class="section-title">Academic Qualification</h2>
+        <div class="edu-block">
+          <div class="edu-logo">
+            <a href="https://kantiana.ru/en/" target="_blank" rel="noopener">
+              <img
+                class="edu-logo-img edu-logo-img--ikbfu"
+                src="assets/kantiana.svg"
+                alt="Immanuel Kant Baltic Federal University"
+              />
+            </a>
+          </div>
+          <div class="edu-text">
+            <p>
+              <strong>2004–2009</strong> Immanuel Kant Baltic Federal University —
+              Master of Science (M.Sc.), Theoretical Physics.
+            </p>
+            <p>
+              <strong>2008–2009</strong> Immanuel Kant Baltic Federal University —
+              Continuing Education Course, Network administrator.
+            </p>
+          </div>
+        </div>
+        <div class="edu-block">
+          <div class="edu-logo">
+            <a
+              href="https://www.linkedin.com/school/ecm-european-college-management/"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                class="edu-logo-img edu-logo-img--ecm"
+                src="assets/ecm.jpg"
+                alt="ECM European College Management"
+              />
+            </a>
+          </div>
+          <div class="edu-text">
+            <p>
+              <strong>2015–2016</strong> ECM: European College Management (Ireland) —
+              Language ISE.
+            </p>
+          </div>
+        </div>
+
+        <h2 class="section-title">Work Experience</h2>
+
+        <div class="role-head">
+          <p class="role-title">Site Reliability Engineer Lead</p>
+          <p class="company-line">
+            <a href="https://www.wiley.com" target="_blank" rel="noopener">
+              <img
+                class="employer-logo wiley-logo"
+                src="assets/Wiley-Wordmark-black.png"
+                alt="Wiley"
+              />
+            </a>
+          </p>
+        </div>
+        <p class="dates">Jan 2019 – present</p>
+        <p>
+          Millions of users, thousands of employees, hundreds of micro-services, and tens of
+          applications.
+        </p>
+        <p>
+          In my current role I’m successfully managing multiple SRE teams. I write code,
+          conduct code reviews, write documentation, manage tasks and the SRE workload, educate
+          DEV and QA teams. I also participate in the Architecture council.
+        </p>
+        <p>
+          With one of my teams, we created a full-cycle framework and implemented a platform
+          based on this framework. We migrated an entire project (<strong>80+ microservices</strong>,
+          <strong>200+ developers and testers</strong>) from manually provisioned hosts running
+          various Java applications to a fully automated <strong>Kubernetes</strong>-based,
+          <strong>GitOps</strong>-centric, agile, robust, and scalable platform with stakeholder
+          approval for production flow. The results include:
+        </p>
+        <ul class="tight">
+          <li>
+            Developers no longer require intervention from the Operations team to implement app
+            architecture changes or add new functionality.
+          </li>
+          <li>
+            Deployment frequency increased from 1–2 releases per month to <strong>semi-daily</strong>.
+          </li>
+          <li>
+            Releases now rarely require downtime (90% of cases), compared to the past when 4 out
+            of 5 releases/maintenances required negotiation and agreement with multiple layers of
+            management for downtime.
+          </li>
+          <li>Reliability finally reached <strong>double nines</strong>.</li>
+        </ul>
+        <p><strong>Other projects I lead include:</strong></p>
+        <ul class="tight">
+          <li>
+            Building an internal unified artifacts storage used by all Wiley development teams
+            (<strong>50+ teams</strong>, <strong>1000+ devs</strong>). JFrog Artifactory as a
+            base; Terraform for side infrastructure; EKS and eksctl for Kubernetes; AWS Aurora
+            MySQL and S3 for storage; Flux and Helm for CI/CD. We support 10+ different repository
+            types (PyPI, Helm, Docker, Maven, Gradle, Go, rpm).
+          </li>
+          <li>
+            Supporting Wiley’s main Jenkins server, providing exceptional support to various users
+            — from non-technical article editors to executive management and savvy developers. It is
+            a high-load, highly available, mission-critical cluster; also participating in night
+            shifts to keep it running 24/7.
+          </li>
+          <li>
+            Managing Wiley’s GitHub organization: weekly meetings with the GitHub team (PM and tech
+            reps). Delivered native solutions such as migrating Jenkins workloads to GitHub Actions,
+            using GitHub Codespaces for data scientists, and integrating GitHub user management with
+            Wiley’s Single Sign-On (SSO) system.
+          </li>
+        </ul>
+        <p><strong>Other tasks include</strong></p>
+        <ul class="tight">
+          <li>
+            <strong>Vulnerability resistance:</strong> creating and managing HashiCorp Packer and
+            automated Wiley–AWS AMI replacement.
+          </li>
+          <li>
+            <strong>Secrets handling:</strong> HashiCorp Vault, AWS Parameter Store, Secrets Manager.
+          </li>
+          <li>
+            <strong>Better traffic routing:</strong> Nginx Ingress, AWS aws-load-balancer-controller.
+          </li>
+          <li>
+            <strong>Better code:</strong> GitHub repository management best practices; creating and
+            supporting internal Terraform modules.
+          </li>
+        </ul>
+        <p><strong>Writing internal tools such as:</strong></p>
+        <ul class="tight">
+          <li>Wiley Terraform discrepancy report (Python/Go).</li>
+          <li>Wiley AMI updater (Python).</li>
+          <li>Wiley ASG EC2 Docker container updater (Bash/Python).</li>
+        </ul>
+
+        <div class="role-head job-sep">
+          <p class="role-title">Sr. Technical Support Engineer</p>
+          <p class="company-line">
+            <a href="https://axcient.com" target="_blank" rel="noopener">
+              <img
+                class="employer-logo axcient-logo"
+                src="assets/Axcient_logo.svg"
+                alt="Axcient"
+              />
+            </a>
+          </p>
+        </div>
+        <p class="dates">Jul 2016 – Dec 2018 (2 years 6 months)</p>
+        <ul class="tight">
+          <li>
+            Providing excellent technical support for Managed Service Providers (MSPs) and end
+            clients by phone, email, and remote access.
+          </li>
+          <li>
+            On-boarding new clients — careful, courteous, and highly professional engagement.
+          </li>
+          <li>Disaster recovery.</li>
+          <li>File restore.</li>
+          <li>
+            Preparation and launch of entire company infrastructure on a Private Cloud
+            environment (cloud failover).
+          </li>
+        </ul>
+        <p><strong>Troubleshooting:</strong></p>
+        <ul class="tight">
+          <li>Microsoft VSS issues.</li>
+          <li>MS SQL backup/recovery issues.</li>
+          <li>MS Exchange database/mailbox/mail backup &amp; recovery issues.</li>
+        </ul>
+
+        <div class="role-head job-sep">
+          <p class="role-title">IT Infrastructure Architect Consultant</p>
+          <p class="company-line">
+            <a href="https://electronmash.ru" target="_blank" rel="noopener">
+              <img
+                class="employer-logo electronmash-logo"
+                src="assets/electronmash.png"
+                alt="Electronmash"
+              />
+            </a>
+          </p>
+        </div>
+        <p class="dates">Mar 2015 – May 2016 (1 year 3 months) · Remote · Part-time</p>
+        <ul class="tight">
+          <li>Resolve urgent production issues.</li>
+          <li>Advising local system administrators.</li>
+          <li>Best practices.</li>
+        </ul>
+
+        <div class="role-head job-sep">
+          <p class="role-title">IT Infrastructure Engineer</p>
+          <p class="company-line">
+            <a href="https://virtualpos.ru" target="_blank" rel="noopener">
+              <img
+                class="employer-logo virtualpos-logo"
+                src="assets/virtual-pos.png"
+                alt="Virtualpos"
+              />
+            </a>
+          </p>
+        </div>
+        <p class="dates">Apr 2015 – Sep 2015 (6 months)</p>
+        <p>
+          SQL; terminal servers; Active Directory; Azure; Exchange 2010/2013; Office 365;
+          Xen/Hyper-V/ESXi; backups; Zabbix; service desk; integrations.
+        </p>
+
+        <div class="role-head job-sep">
+          <p class="role-title">Senior IT Engineer</p>
+          <p class="company-line">
+            <a href="https://electronmash.ru" target="_blank" rel="noopener">
+              <img
+                class="employer-logo electronmash-logo"
+                src="assets/electronmash.png"
+                alt="Electronmash"
+              />
+            </a>
+          </p>
+        </div>
+        <p class="dates">Jun 2012 – Mar 2015 (2 years 10 months)</p>
+        <ul class="tight">
+          <li>MS SQL.</li>
+          <li>Terminal Servers.</li>
+          <li>Active Directory.</li>
+          <li>Exchange Server (2010/2013), Office 365.</li>
+          <li>Virtualization: Xen, Hyper-V, ESXi.</li>
+          <li>Backups.</li>
+          <li>Zabbix.</li>
+          <li>Technical Support, Service Desk.</li>
+          <li>Azure Cloud.</li>
+          <li>Cisco L2/L3.</li>
+          <li>Kaspersky Security Center.</li>
+          <li>VoIP/IP — Avaya; Asterisk.</li>
+          <li>UTM FortiGate (firewall).</li>
+        </ul>
+
+        <div class="role-head job-sep">
+          <p class="role-title">Technical Support Specialist</p>
+          <p class="company-line">
+            <a href="https://electronmash.ru" target="_blank" rel="noopener">
+              <img
+                class="employer-logo electronmash-logo"
+                src="assets/electronmash.png"
+                alt="Electronmash"
+              />
+            </a>
+          </p>
+        </div>
+        <p class="dates">Mar 2011 – Jun 2012 (1 year 4 months)</p>
+        <ul class="tight">
+          <li>User support (1st–2nd line): Windows XP/7/8; Linux (Ubuntu).</li>
+          <li>AD — create users and groups.</li>
+          <li>GPO — IE, firewall and other OS settings; software deployment.</li>
+          <li>TMG Forefront — creating and managing rules.</li>
+          <li>Kaspersky Security Center v9.</li>
+          <li>SharePoint 2007 — portal support; Outlook integration.</li>
+          <li>Flash — advertising banners for marketing.</li>
+          <li>Kerio Mail Server — mailboxes and groups.</li>
+        </ul>
+
+        <div class="role-head job-sep">
+          <p class="role-title">Teacher of Physics / System Administrator</p>
+          <p class="company-line">
+            <img
+              class="employer-logo school-logo"
+              src="assets/school.png"
+              alt="School 46"
+            />
+          </p>
+        </div>
+        <p class="dates">Jul 2009 – Feb 2011 (1 year 8 months)</p>
+        <p>Teaching physics (secondary school).</p>
+
+        <div class="role-head job-sep">
+          <p class="role-title">Lineman (part-time)</p>
+          <p class="company-line">
+            <a href="https://kantiana.ru/en/" target="_blank" rel="noopener">
+              <img
+                class="employer-logo kantiana-logo"
+                src="assets/kantiana.svg"
+                alt="Immanuel Kant Baltic Federal University"
+              />
+            </a>
+          </p>
+        </div>
+        <p class="dates">Jun 2006 – Dec 2008 (2 years 7 months)</p>
+        <p>Laying network cables / setting up software.</p>
+
+        <h2 class="section-title">Certificates</h2>
+        <ul class="tight">
+          <li>
+            Microsoft: MCSE (Messaging); MCSA Office 365; MCSA Windows Server 2012.
+          </li>
+          <li>AWS: SOA-C01 — Certified SysOps Administrator.</li>
+        </ul>
+
+        <h2 class="section-title">Languages</h2>
+        <p>English — read/write/speak (IELTS 8). Russian — native.</p>
+      </main>
+
+      <aside class="sidebar">
+        <div class="contact-mini">
+          <strong>Contact</strong><br />
+          <a href="mailto:a.alimov@hotmail.com">a.alimov@hotmail.com</a><br />
+          <a href="tel:+15512252309">551-225-2309</a><br />
+          Open to relocate · DOB 01/03/1987
+        </div>
+
+        <p class="stack-h">STACK</p>
+
+        <div class="stack-block">
+          <strong>Main</strong>
+          <ul>
+            <li>
+              GitOps (ArgoCD and Flux), Jenkins, Terraform/OpenTofu, Ansible,
+              CloudFormation.
+            </li>
+          </ul>
+        </div>
+
+        <div class="stack-block">
+          <strong>Logging &amp; Monitoring &amp; Analytics</strong>
+          <ul>
+            <li>
+              CloudWatch with self-written Python wrappers; Dynatrace; ELK/EFK; Prometheus,
+              Loki, Grafana.
+            </li>
+          </ul>
+        </div>
+
+        <div class="stack-block">
+          <strong>Orchestration</strong>
+          <ul>
+            <li>
+              Kubernetes, EKS, vanilla (kops; MicroK8s; kubespray), Rancher (federated
+              clusters), Swarm, AWS Batch/Fargate/ECS, ASG/EC2 host installs (Dockerized and
+              bare metal).
+            </li>
+          </ul>
+        </div>
+
+        <div class="stack-block">
+          <strong>Cloud / apps / data</strong>
+          <ul>
+            <li>
+              Node.js; AWS CloudFront; Cloudflare; Java (Spring Boot); TIBCO; AWS SQS;
+              RDS/Aurora (MySQL/PostgreSQL); Couchbase; MongoDB; DynamoDB; Alfresco/Solr.
+            </li>
+          </ul>
+        </div>
+
+        <div class="stack-block">
+          <strong>Other tools</strong>
+          <ul>
+            <li>
+              HashiCorp stack; Linkerd; MS Teams API (ChatOps); GitHub API; Telegram API.
+            </li>
+          </ul>
+        </div>
+
+        <div class="stack-block">
+          <strong>Programming</strong>
+          <ul>
+            <li>
+              Python, Bash, Go, JavaScript (React/Vue), Java (code review), HCL, Helm,
+              Jinja/Ansible.
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="pdf-fab"
+    id="pdf-fab"
+    aria-label="Download CV as PDF file"
+  >
+    Download PDF
+  </button>
+
+  <!-- Local bundle: file:// cannot load CDN; avoids falling back to window.print() -->
+  <script src="assets/html2pdf.bundle.min.js"></script>
+  <script>
+    (function () {
+      const btn = document.getElementById("pdf-fab");
+      const defaultLabel = "Download PDF";
+
+      const LOCAL_HTTP_HELP =
+        "The browser blocks building a PDF from a file:// page (canvas security — “operation is insecure”).\n\n" +
+        "Serve the cv folder over HTTP, then open the CV in the browser and use Download PDF again:\n\n" +
+        "  cd /path/to/steampipe/cv\n" +
+        "  python3 -m http.server 8765\n\n" +
+        "Then open:\n" +
+        "  http://localhost:8765/CV_Alimov_visual.html\n\n" +
+        "Alternative: from the same folder run  npx --yes serve . -l 8765";
+
+      function isFileProtocol() {
+        return window.location.protocol === "file:";
+      }
+
+      if (isFileProtocol()) {
+        const note = document.createElement("p");
+        note.className = "pdf-file-protocol-note";
+        note.setAttribute("role", "status");
+        note.innerHTML =
+          "<strong>PDF</strong> from <code>file://</code> is blocked by the browser. " +
+          "Run in Terminal: <code>cd …/cv</code> → <code>python3 -m http.server 8765</code> → open " +
+          "<code>http://localhost:8765/CV_Alimov_visual.html</code>";
+        document.body.appendChild(note);
+      }
+
+      async function downloadCvPdf() {
+        if (isFileProtocol()) {
+          alert(LOCAL_HTTP_HELP);
+          return;
+        }
+
+        if (typeof html2pdf === "undefined") {
+          alert(
+            "PDF engine failed to load (html2pdf). Check that assets/html2pdf.bundle.min.js is next to this HTML file."
+          );
+          return;
+        }
+
+        const el = document.querySelector(".page");
+        if (!el) return;
+
+        btn.disabled = true;
+        const prev = btn.textContent;
+        btn.textContent = "…";
+
+        const opt = {
+          margin: [8, 8, 8, 8],
+          filename: "Aleksandr_Alimov_CV.pdf",
+          image: { type: "jpeg", quality: 0.92 },
+          html2canvas: {
+            scale: 2,
+            useCORS: true,
+            logging: false,
+            letterRendering: true,
+          },
+          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"] },
+        };
+
+        try {
+          await html2pdf().set(opt).from(el).save();
+        } catch (e) {
+          console.error(e);
+          const msg = e && e.message ? e.message : String(e);
+          const isSecurity =
+            /insecure/i.test(msg) || (e && e.name === "SecurityError");
+          alert(
+            "Could not build PDF: " +
+              msg +
+              (isSecurity ? "\n\n" + LOCAL_HTTP_HELP : "\n\nTry http://localhost as in the yellow note.")
+          );
+        } finally {
+          btn.disabled = false;
+          btn.textContent = prev || defaultLabel;
+        }
+      }
+
+      btn.addEventListener("click", downloadCvPdf);
+    })();
+  </script>
+</body>
+</html>

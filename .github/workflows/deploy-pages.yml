@@ -1,0 +1,63 @@
+# Publishes only the static site (no .github/, no README on the host).
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Verify local asset paths from index.html
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import pathlib
+          import re
+          import sys
+
+          root = pathlib.Path(".")
+          text = (root / "index.html").read_text(encoding="utf-8")
+          paths = set(re.findall(r'\bsrc="(assets/[^"]+)"', text))
+          missing = sorted(p for p in paths if not (root / p).is_file())
+          if missing:
+              print("Missing asset files:", file=sys.stderr)
+              for p in missing:
+                  print(f"  {p}", file=sys.stderr)
+              sys.exit(1)
+          print(f"OK: {len(paths)} asset path(s) from index.html exist on disk")
+          PY
+
+      - name: Stage static site
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          test -f index.html
+          test -d assets
+          cp index.html CNAME .nojekyll _site/
+          cp -r assets _site/
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v5
