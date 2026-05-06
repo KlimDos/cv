@@ -1,0 +1,13 @@
+CV PDF export uses these vendored UMD builds (no html2pdf — it clones DOM and changes layout).
+
+1) html2canvas 1.4.1
+   https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js
+   Captures the live .page element in-place (WYSIWYG vs on-screen layout).
+
+2) jsPDF 2.5.1 UMD
+   https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js
+   Slices the tall canvas into A4-height strips and saves one multi-page PDF.
+
+To refresh:
+  curl -fsSL -o assets/html2canvas.min.js "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+  curl -fsSL -o assets/jspdf.umd.min.js "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
