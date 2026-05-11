@@ -8,6 +8,17 @@
     content="Aleksandr Alimov CV: SRE Lead with 15+ years in platform engineering, Kubernetes, GitOps, and enterprise infrastructure."
   />
   <title>Aleksandr Alimov — CV</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LTQYHSXD7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-9LTQYHSXD7");
+  </script>
   <style>
     :root {
       --bg: #f8f8f7;
@@ -92,7 +103,9 @@
     }
 
     .header-link {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       vertical-align: middle;
       padding: 0.38rem 0.75rem;
       font-size: 0.8125rem;
@@ -119,22 +132,14 @@
       outline-offset: 2px;
     }
 
-    /* table row: html2canvas handles this better than flex + gap in pills */
-    .header-link__inner {
-      display: table;
-      border-collapse: collapse;
-    }
-
-    .header-link__icon,
-    .header-link__label {
-      display: table-cell;
-      vertical-align: middle;
-    }
-
     .header-link__icon {
-      padding-right: 0.4rem;
+      flex-shrink: 0;
       line-height: 0;
-      width: 1%;
+    }
+
+    .header-link__label {
+      flex: 0 1 auto;
+      min-width: 0;
     }
 
     .header-link__icon svg {
@@ -795,16 +800,15 @@
                 href="https://alimov.top"
                 rel="me noopener"
                 title="https://alimov.top"
+                data-header-label="alimov.top"
               >
-                <span class="header-link__inner">
-                  <span class="header-link__icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                    </svg>
-                  </span>
-                  <span class="header-link__label">alimov.top</span>
+                <span class="header-link__icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#555551" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
                 </span>
+                <span class="header-link__label">alimov.top</span>
               </a>
             </li>
             <li>
@@ -813,16 +817,15 @@
                 href="https://github.com/klimdos"
                 rel="noopener"
                 title="https://github.com/klimdos"
+                data-header-label="GitHub @klimdos"
               >
-                <span class="header-link__inner">
-                  <span class="header-link__icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-                    </svg>
-                  </span>
-                  <span class="header-link__label"
-                    >GitHub<span class="header-link-text"> @klimdos</span></span>
+                <span class="header-link__icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14">
+                    <path fill="#555551" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                  </svg>
                 </span>
+                <span class="header-link__label"
+                  >GitHub<span class="header-link-text"> @klimdos</span></span>
               </a>
             </li>
           </ul>
@@ -1317,7 +1320,8 @@
 
         const marginMm = 3;
         const jpegQuality = 0.92;
-        const scale = 3;
+        /* scale >2 on tall pages can exceed canvas limits → blank PDF in some browsers */
+        const scale = 2;
         const contentFill = 1;
 
         try {
@@ -1342,6 +1346,39 @@
                 page.style.border = "none";
                 page.style.boxShadow = "none";
               }
+              var hi = clonedDoc.querySelector(".header-intro");
+              if (hi) {
+                hi.style.minWidth = "auto";
+                hi.style.overflow = "visible";
+              }
+              clonedDoc.querySelectorAll("a.header-link").forEach(function (a) {
+                a.style.overflow = "visible";
+                a.style.textDecoration = "none";
+                var label = a.querySelector(".header-link__label");
+                if (!label) return;
+                var txt =
+                  label.innerText.replace(/\s+/g, " ").trim() ||
+                  a.getAttribute("data-header-label") ||
+                  "";
+                while (label.firstChild) {
+                  label.removeChild(label.firstChild);
+                }
+                label.appendChild(clonedDoc.createTextNode(txt));
+                label.setAttribute(
+                  "style",
+                  [
+                    "display:inline-block",
+                    "vertical-align:middle",
+                    "color:#1a1a19",
+                    "-webkit-text-fill-color:#1a1a19",
+                    'font-family:Arial,Helvetica,sans-serif',
+                    "font-size:13px",
+                    "font-weight:500",
+                    "line-height:1.25",
+                    "white-space:nowrap",
+                  ].join(";")
+                );
+              });
             },
           });
 
