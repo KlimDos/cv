@@ -137,9 +137,10 @@
       line-height: 0;
     }
 
+    /* Do not use min-width:0 on flex labels — html2canvas paints them at 0 width (icons only in PDF). */
     .header-link__label {
-      flex: 0 1 auto;
-      min-width: 0;
+      flex: 0 0 auto;
+      min-width: auto;
     }
 
     .header-link__icon svg {
@@ -1352,14 +1353,31 @@
                 hi.style.overflow = "visible";
               }
               clonedDoc.querySelectorAll("a.header-link").forEach(function (a) {
-                a.style.overflow = "visible";
-                a.style.textDecoration = "none";
+                var txt =
+                  a.getAttribute("data-header-label") ||
+                  (a.querySelector(".header-link__label") || {}).innerText ||
+                  "";
+                txt = String(txt).replace(/\s+/g, " ").trim();
+                a.style.cssText = [
+                  "display:inline-block",
+                  "overflow:visible",
+                  "text-decoration:none",
+                  "color:#1a1a19",
+                  "-webkit-text-fill-color:#1a1a19",
+                  "font-family:Arial,Helvetica,sans-serif",
+                  "font-size:13px",
+                  "font-weight:500",
+                  "line-height:1.25",
+                  "white-space:nowrap",
+                  "vertical-align:middle",
+                ].join(";");
+                var icon = a.querySelector(".header-link__icon");
+                if (icon) {
+                  icon.style.cssText =
+                    "display:inline-block;vertical-align:middle;margin-right:0.35rem;line-height:0";
+                }
                 var label = a.querySelector(".header-link__label");
                 if (!label) return;
-                var txt =
-                  label.innerText.replace(/\s+/g, " ").trim() ||
-                  a.getAttribute("data-header-label") ||
-                  "";
                 while (label.firstChild) {
                   label.removeChild(label.firstChild);
                 }
@@ -1367,11 +1385,16 @@
                 label.setAttribute(
                   "style",
                   [
-                    "display:inline-block",
+                    "display:inline",
                     "vertical-align:middle",
+                    "flex:none",
+                    "min-width:auto",
+                    "width:auto",
+                    "max-width:none",
+                    "overflow:visible",
                     "color:#1a1a19",
                     "-webkit-text-fill-color:#1a1a19",
-                    'font-family:Arial,Helvetica,sans-serif',
+                    "font-family:Arial,Helvetica,sans-serif",
                     "font-size:13px",
                     "font-weight:500",
                     "line-height:1.25",
