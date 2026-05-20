@@ -457,6 +457,47 @@
       filter: brightness(0.95);
     }
 
+    /* PDF capture: same two-column desktop layout regardless of viewport width. */
+    html.cv-pdf-export body {
+      padding: 2.25rem 1.25rem 2.75rem !important;
+      font-size: 15px !important;
+      min-width: 1020px;
+    }
+
+    html.cv-pdf-export .page {
+      max-width: 1020px !important;
+      padding: 1.8rem 1.8rem 1.6rem !important;
+    }
+
+    html.cv-pdf-export .cols {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) minmax(250px, 290px) !important;
+      gap: 1.5rem !important;
+    }
+
+    html.cv-pdf-export .sidebar {
+      border-left: 1px solid var(--rule) !important;
+      border-top: 0 !important;
+      margin-top: 0 !important;
+      padding-left: 1.15rem !important;
+      padding-top: 0 !important;
+    }
+
+    html.cv-pdf-export .top-left {
+      display: grid !important;
+      grid-template-columns: 1fr auto !important;
+      justify-items: stretch !important;
+    }
+
+    html.cv-pdf-export .photo-wrap {
+      order: unset !important;
+      margin-bottom: 0 !important;
+    }
+
+    html.cv-pdf-export .role-head {
+      align-items: center !important;
+    }
+
     @media (max-width: 860px) {
       body {
         padding: 1rem 0.8rem 1.25rem;
@@ -496,7 +537,7 @@
 
     @media print {
       @page {
-        size: A4;
+        size: letter;
         margin: 11mm 12mm;
       }
 
@@ -1235,13 +1276,13 @@
     type="button"
     class="export-fab"
     id="export-pdf-btn"
-    aria-label="Download CV as PDF (raster pages)"
+    aria-label="Download CV as PDF (US Letter)"
   >
     Download PDF
   </button>
 
   <!--
-    PDF: html2canvas snapshots the live .page (no clone/reflow), jsPDF pastes JPEG strips per A4.
+    PDF: html2canvas snapshots .page at desktop width; jsPDF pastes JPEG strips onto US Letter pages.
     Provenance: assets/export-libs-source.txt
   -->
   <script src="assets/jspdf.umd.min.js"></script>
@@ -1250,6 +1291,73 @@
     (function () {
       const btn = document.getElementById("export-pdf-btn");
       const defaultLabel = "Download PDF";
+      const PDF_PAGE_FORMAT = "letter";
+      const PDF_CAPTURE_WIDTH = 1200;
+      const PDF_CAPTURE_HEIGHT = 2400;
+
+      function preparePdfClone(clonedDoc) {
+        clonedDoc.documentElement.classList.add("cv-pdf-export");
+        var page = clonedDoc.querySelector(".page");
+        if (page) {
+          page.style.border = "none";
+          page.style.boxShadow = "none";
+        }
+        var hi = clonedDoc.querySelector(".header-intro");
+        if (hi) {
+          hi.style.minWidth = "auto";
+          hi.style.overflow = "visible";
+        }
+        clonedDoc.querySelectorAll("a.header-link").forEach(function (a) {
+          var txt =
+            a.getAttribute("data-header-label") ||
+            (a.querySelector(".header-link__label") || {}).innerText ||
+            "";
+          txt = String(txt).replace(/\s+/g, " ").trim();
+          a.style.cssText = [
+            "display:inline-block",
+            "overflow:visible",
+            "text-decoration:none",
+            "color:#1a1a19",
+            "-webkit-text-fill-color:#1a1a19",
+            "font-family:Arial,Helvetica,sans-serif",
+            "font-size:13px",
+            "font-weight:500",
+            "line-height:1.25",
+            "white-space:nowrap",
+            "vertical-align:middle",
+          ].join(";");
+          var icon = a.querySelector(".header-link__icon");
+          if (icon) {
+            icon.style.cssText =
+              "display:inline-block;vertical-align:middle;margin-right:0.35rem;line-height:0";
+          }
+          var label = a.querySelector(".header-link__label");
+          if (!label) return;
+          while (label.firstChild) {
+            label.removeChild(label.firstChild);
+          }
+          label.appendChild(clonedDoc.createTextNode(txt));
+          label.setAttribute(
+            "style",
+            [
+              "display:inline",
+              "vertical-align:middle",
+              "flex:none",
+              "min-width:auto",
+              "width:auto",
+              "max-width:none",
+              "overflow:visible",
+              "color:#1a1a19",
+              "-webkit-text-fill-color:#1a1a19",
+              "font-family:Arial,Helvetica,sans-serif",
+              "font-size:13px",
+              "font-weight:500",
+              "line-height:1.25",
+              "white-space:nowrap",
+            ].join(";")
+          );
+        });
+      }
 
       function addRasterPagesFromCanvas(canvas, pdf, opts) {
         const marginMm = opts.marginMm;
@@ -1325,6 +1433,7 @@
         const scale = 2;
         const contentFill = 1;
 
+        document.documentElement.classList.add("cv-pdf-export");
         try {
           if (document.fonts && document.fonts.ready) {
             await document.fonts.ready;
@@ -1341,74 +1450,15 @@
             logging: false,
             backgroundColor: "#ffffff",
             foreignObjectRendering: false,
-            onclone: function (clonedDoc) {
-              var page = clonedDoc.querySelector(".page");
-              if (page) {
-                page.style.border = "none";
-                page.style.boxShadow = "none";
-              }
-              var hi = clonedDoc.querySelector(".header-intro");
-              if (hi) {
-                hi.style.minWidth = "auto";
-                hi.style.overflow = "visible";
-              }
-              clonedDoc.querySelectorAll("a.header-link").forEach(function (a) {
-                var txt =
-                  a.getAttribute("data-header-label") ||
-                  (a.querySelector(".header-link__label") || {}).innerText ||
-                  "";
-                txt = String(txt).replace(/\s+/g, " ").trim();
-                a.style.cssText = [
-                  "display:inline-block",
-                  "overflow:visible",
-                  "text-decoration:none",
-                  "color:#1a1a19",
-                  "-webkit-text-fill-color:#1a1a19",
-                  "font-family:Arial,Helvetica,sans-serif",
-                  "font-size:13px",
-                  "font-weight:500",
-                  "line-height:1.25",
-                  "white-space:nowrap",
-                  "vertical-align:middle",
-                ].join(";");
-                var icon = a.querySelector(".header-link__icon");
-                if (icon) {
-                  icon.style.cssText =
-                    "display:inline-block;vertical-align:middle;margin-right:0.35rem;line-height:0";
-                }
-                var label = a.querySelector(".header-link__label");
-                if (!label) return;
-                while (label.firstChild) {
-                  label.removeChild(label.firstChild);
-                }
-                label.appendChild(clonedDoc.createTextNode(txt));
-                label.setAttribute(
-                  "style",
-                  [
-                    "display:inline",
-                    "vertical-align:middle",
-                    "flex:none",
-                    "min-width:auto",
-                    "width:auto",
-                    "max-width:none",
-                    "overflow:visible",
-                    "color:#1a1a19",
-                    "-webkit-text-fill-color:#1a1a19",
-                    "font-family:Arial,Helvetica,sans-serif",
-                    "font-size:13px",
-                    "font-weight:500",
-                    "line-height:1.25",
-                    "white-space:nowrap",
-                  ].join(";")
-                );
-              });
-            },
+            windowWidth: PDF_CAPTURE_WIDTH,
+            windowHeight: PDF_CAPTURE_HEIGHT,
+            onclone: preparePdfClone,
           });
 
           const { jsPDF } = window.jspdf;
           const pdf = new jsPDF({
             unit: "mm",
-            format: "a4",
+            format: PDF_PAGE_FORMAT,
             orientation: "portrait",
           });
 
@@ -1427,6 +1477,7 @@
               "\n\nRefresh the page and try again."
           );
         } finally {
+          document.documentElement.classList.remove("cv-pdf-export");
           btn.disabled = false;
           btn.textContent = prev || defaultLabel;
         }
