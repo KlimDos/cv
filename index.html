@@ -62,7 +62,6 @@
       gap: 1.2rem;
       align-items: start;
       padding: 0 1.5rem 1.5rem;
-      margin-bottom: 1.5rem;
       padding-bottom: 1rem;
       border-bottom: 1px solid var(--rule);
     }
@@ -293,7 +292,6 @@
     }
 
     .section-title {
-      margin: 1.35rem 0 0.6rem;
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -1040,7 +1038,7 @@
             <a href="https://axcient.com" target="_blank" rel="noopener">
               <img
                 class="employer-logo axcient-logo"
-                src="assets/axcient-logo.svg"
+                src="assets/axcient-logo.png"
                 alt="Axcient"
               />
             </a>
@@ -1102,8 +1100,9 @@
         </div>
         <p class="dates">Apr 2015 – Sep 2015 (6 months)</p>
         <p>
-          SQL; terminal servers; Active Directory; Azure; Exchange 2010/2013; Office 365;
-          Xen/Hyper-V/ESXi; backups; Zabbix; service desk; integrations.
+          SQL; terminal servers; Active Directory; Azure;<br />
+          Exchange 2010/2013; Office 365; Xen/Hyper-V/ESXi; backups;<br />
+          Zabbix; service desk; integrations.
         </p>
 
         <div class="role-head job-sep">
@@ -1361,6 +1360,10 @@
 
       function addRasterPagesFromCanvas(canvas, pdf, opts) {
         const marginMm = opts.marginMm;
+        const marginVerticalMm =
+          typeof opts.marginVerticalMm === "number"
+            ? opts.marginVerticalMm
+            : marginMm;
         const jpegQuality = opts.jpegQuality;
         const contentFill =
           typeof opts.contentFill === "number" ? opts.contentFill : 1;
@@ -1368,7 +1371,7 @@
         const pageW = pdf.internal.pageSize.getWidth();
         const pageH = pdf.internal.pageSize.getHeight();
         const usableW = pageW - 2 * marginMm;
-        const usableH = pageH - 2 * marginMm;
+        const usableH = pageH - 2 * marginVerticalMm;
         const contentW = usableW * contentFill;
         const offsetX = marginMm + (usableW - contentW) / 2;
 
@@ -1403,7 +1406,14 @@
           if (pageIndex > 0) {
             pdf.addPage();
           }
-          pdf.addImage(dataUrl, "JPEG", offsetX, marginMm, contentW, sliceMmH);
+          pdf.addImage(
+            dataUrl,
+            "JPEG",
+            offsetX,
+            marginVerticalMm,
+            contentW,
+            sliceMmH
+          );
           pageIndex += 1;
         }
       }
@@ -1428,6 +1438,7 @@
         btn.textContent = "…";
 
         const marginMm = 3;
+        const marginVerticalMm = 6;
         const jpegQuality = 0.92;
         /* scale >2 on tall pages can exceed canvas limits → blank PDF in some browsers */
         const scale = 2;
@@ -1464,6 +1475,7 @@
 
           addRasterPagesFromCanvas(canvas, pdf, {
             marginMm: marginMm,
+            marginVerticalMm: marginVerticalMm,
             jpegQuality: jpegQuality,
             contentFill: contentFill,
           });
